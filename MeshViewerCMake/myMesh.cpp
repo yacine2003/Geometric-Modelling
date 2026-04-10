@@ -213,13 +213,78 @@ void myMesh::simplify(myVertex *)
 
 void myMesh::triangulate()
 {
-	/**** TODO ****/
+	int original_size = faces.size();
+	for (int i = 0; i < original_size; ++i) {
+		if (faces[i] != NULL) {
+			triangulate(faces[i]);
+		}
+	}
 }
 
 //return false if already triangle, true othewise.
 bool myMesh::triangulate(myFace *f)
 {
-	/**** TODO ****/
-	return false;
+	if (f == NULL || f->adjacent_halfedge == NULL) return false;
+
+	vector<myHalfedge*> bnd;
+	myHalfedge* curr = f->adjacent_halfedge;
+	do {
+		bnd.push_back(curr);
+		curr = curr->next;
+	} while (curr != f->adjacent_halfedge && curr != NULL);
+
+	int N = bnd.size();
+	if (N <= 3) return false;
+
+	double sumX = 0, sumY = 0, sumZ = 0;
+	for (int i = 0; i < N; ++i) {
+		sumX += bnd[i]->source->point->X;
+		sumY += bnd[i]->source->point->Y;
+		sumZ += bnd[i]->source->point->Z;
+	}
+
+	myVertex *vc = new myVertex();
+	vc->point = new myPoint3D(sumX / N, sumY / N, sumZ / N);
+	vc->index = vertices.size();
+	vertices.push_back(vc);
+
+	vector<myHalfedge*> In(N), Out(N);
+	for (int i = 0; i < N; ++i) {
+		In[i] = new myHalfedge();
+		Out[i] = new myHalfedge();
+		In[i]->source = bnd[(i + 1) % N]->source;
+		Out[i]->source = vc;
+
+		In[i]->index = halfedges.size(); halfedges.push_back(In[i]);
+		Out[i]->index = halfedges.size(); halfedges.push_back(Out[i]);
+	}
+
+	vc->originof = Out[0];
+
+	for (int i = 0; i < N; ++i) {
+		myHalfedge *he_i = bnd[i];
+		myHalfedge *in_i = In[i];
+		myHalfedge *out_i = Out[i];
+
+		he_i->next = in_i; in_i->prev = he_i;
+		in_i->next = out_i; out_i->prev = in_i;
+		out_i->next = he_i; he_i->prev = out_i;
+
+		in_i->twin = Out[(i + 1) % N];
+		Out[(i + 1) % N]->twin = in_i;
+
+		myFace *face_i = (i == 0) ? f : new myFace();
+		if (i > 0) {
+			face_i->index = faces.size();
+			faces.push_back(face_i);
+		}
+		face_i->adjacent_halfedge = he_i;
+
+		he_i->adjacent_face = face_i;
+		in_i->adjacent_face = face_i;
+		out_i->adjacent_face = face_i;
+	}
+
+	return true;
 }
 
