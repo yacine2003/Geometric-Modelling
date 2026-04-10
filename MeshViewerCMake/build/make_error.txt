@@ -1,0 +1,454 @@
+[ 12%] Building CXX object CMakeFiles/MeshViewer.dir/main.cpp.o
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:252:2: error: use of undeclared identifier 'glutBitmapString'
+  252 |         glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, (const unsigned char *)text.c_str());
+      |         ^
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:282:2: warning: 'gluPickMatrix' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  282 |         gluPickMatrix((GLdouble)x, (GLdouble)y, 1, 1, viewport);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h:279:13: note: 'gluPickMatrix' has been explicitly marked deprecated here
+  279 | extern void gluPickMatrix (GLdouble x, GLdouble y, GLdouble delX, GLdouble delY, GLint *viewport) OPENGL_DEPRECATED(10.0, 10.9);
+      |             ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:285:2: warning: 'gluPerspective' is deprecated: first deprecated in macOS 10.9 - "Use GLKMatrix4MakePerspective" [-Wdeprecated-declarations]
+  285 |         gluPerspective(fovy, Glut_w / (float)Glut_h, zNear, zFar);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h:278:13: note: 'gluPerspective' has been explicitly marked deprecated here
+  278 | extern void gluPerspective (GLdouble fovy, GLdouble aspect, GLdouble zNear, GLdouble zFar) OPENGL_DEPRECATED_MSG(10_0, 10_9, "Use GLKMatrix4MakePerspective");
+      |             ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:291:2: warning: 'gluLookAt' is deprecated: first deprecated in macOS 10.9 - "Use GLKMatrix4MakeLookAt" [-Wdeprecated-declarations]
+  291 |         gluLookAt(camera_eye.X, camera_eye.Y, camera_eye.Z, camera_eye.X + camera_forward.dX, camera_eye.Y + camera_forward.dY, camera_eye.Z + camera_forward.dZ, camera_up.dX, camera_up.dY, camera_up.dZ);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h:265:13: note: 'gluLookAt' has been explicitly marked deprecated here
+  265 | extern void gluLookAt (GLdouble eyeX, GLdouble eyeY, GLdouble eyeZ, GLdouble centerX, GLdouble centerY, GLdouble centerZ, GLdouble upX, GLdouble upY, GLdouble upZ) OPENGL_DEPRECATED_MSG(10_0, 10_9, "Use GLKMatrix4MakeLookAt");
+      |             ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:356:4: warning: 'gluUnProject' is deprecated: first deprecated in macOS 10.9 - "Use GLKMathUnproject" [-Wdeprecated-declarations]
+  356 |                         gluUnProject(x, y, z, modelview_matrix, projection_matrix, viewport, &(p[0]), &(p[1]), &(p[2]));
+      |                         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h:297:14: note: 'gluUnProject' has been explicitly marked deprecated here
+  297 | extern GLint gluUnProject (GLdouble winX, GLdouble winY, GLdouble winZ, const GLdouble *model, const GLdouble *proj, const GLint *view, GLdouble* objX, GLdouble* objY, GLdouble* objZ) OPENGL_DEPRECATED_MSG(10_0, 10_9, "Use GLKMathUnproject");
+      |              ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:384:13: warning: 'glutGetModifiers' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  384 |         int mode = glutGetModifiers();
+      |                    ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:552:21: note: 'glutGetModifiers' has been explicitly marked deprecated here
+  552 | extern int APIENTRY glutGetModifiers(void) OPENGL_DEPRECATED(10_0, 10_9);
+      |                     ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:408:2: warning: 'glutPostRedisplay' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  408 |         glutPostRedisplay();
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:444:22: note: 'glutPostRedisplay' has been explicitly marked deprecated here
+  444 | extern void APIENTRY glutPostRedisplay(void) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:424:6: warning: 'glutGetModifiers' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  424 |         if (glutGetModifiers() == GLUT_ACTIVE_SHIFT) return;
+      |             ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:552:21: note: 'glutGetModifiers' has been explicitly marked deprecated here
+  552 | extern int APIENTRY glutGetModifiers(void) OPENGL_DEPRECATED(10_0, 10_9);
+      |                     ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:446:2: warning: 'glutPostRedisplay' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  446 |         glutPostRedisplay();
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:444:22: note: 'glutPostRedisplay' has been explicitly marked deprecated here
+  444 | extern void APIENTRY glutPostRedisplay(void) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:481:2: warning: 'glutPostRedisplay' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  481 |         glutPostRedisplay();
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:444:22: note: 'glutPostRedisplay' has been explicitly marked deprecated here
+  444 | extern void APIENTRY glutPostRedisplay(void) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:488:13: warning: 'glutGet' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  488 |         int time = glutGet(GLUT_ELAPSED_TIME);
+      |                    ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:545:21: note: 'glutGet' has been explicitly marked deprecated here
+  545 | extern int APIENTRY glutGet(GLenum type) OPENGL_DEPRECATED(10_0, 10_9);
+      |                     ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:496:2: warning: 'glutPostRedisplay' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  496 |         glutPostRedisplay();
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:444:22: note: 'glutPostRedisplay' has been explicitly marked deprecated here
+  444 | extern void APIENTRY glutPostRedisplay(void) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:497:2: warning: 'glutTimerFunc' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  497 |         glutTimerFunc((1000 + lastTime - time)/60, timerFunc, time);  
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:514:22: note: 'glutTimerFunc' has been explicitly marked deprecated here
+  514 | extern void APIENTRY glutTimerFunc(unsigned int millis, void (*func)(int value), int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:505:2: warning: 'glutPostRedisplay' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  505 |         glutPostRedisplay();
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:444:22: note: 'glutPostRedisplay' has been explicitly marked deprecated here
+  444 | extern void APIENTRY glutPostRedisplay(void) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:524:2: warning: 'glutPostRedisplay' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  524 |         glutPostRedisplay();
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:444:22: note: 'glutPostRedisplay' has been explicitly marked deprecated here
+  444 | extern void APIENTRY glutPostRedisplay(void) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:530:2: warning: 'glutInit' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  530 |         glutInit(&argc, argv);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:431:22: note: 'glutInit' has been explicitly marked deprecated here
+  431 | extern void APIENTRY glutInit(int *argcp, char **argv) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:531:2: warning: 'glutInitDisplayMode' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  531 |         glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH | GLUT_MULTISAMPLE);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:432:22: note: 'glutInitDisplayMode' has been explicitly marked deprecated here
+  432 | extern void APIENTRY glutInitDisplayMode(unsigned int mode) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:532:2: warning: 'glutCreateWindow' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  532 |         glutCreateWindow("My 4I-IG3 Application!");
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:441:21: note: 'glutCreateWindow' has been explicitly marked deprecated here
+  441 | extern int APIENTRY glutCreateWindow(const char *title) OPENGL_DEPRECATED(10_0, 10_9);
+      |                     ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:535:2: warning: 'glutReshapeWindow' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  535 |         glutReshapeWindow(Glut_w, Glut_h);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:454:22: note: 'glutReshapeWindow' has been explicitly marked deprecated here
+  454 | extern void APIENTRY glutReshapeWindow(int width, int height) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:537:2: warning: 'glutReshapeFunc' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  537 |         glutReshapeFunc(reshape);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:506:22: note: 'glutReshapeFunc' has been explicitly marked deprecated here
+  506 | extern void APIENTRY glutReshapeFunc(void (*func)(int width, int height)) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:538:2: warning: 'glutDisplayFunc' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  538 |         glutDisplayFunc(display);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:505:22: note: 'glutDisplayFunc' has been explicitly marked deprecated here
+  505 | extern void APIENTRY glutDisplayFunc(void (*func)(void)) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:539:2: warning: 'glutKeyboardFunc' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  539 |         glutKeyboardFunc(keyboard);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:507:22: note: 'glutKeyboardFunc' has been explicitly marked deprecated here
+  507 | extern void APIENTRY glutKeyboardFunc(void (*func)(unsigned char key, int x, int y)) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:540:2: warning: 'glutSpecialFunc' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  540 |         glutSpecialFunc(keyboard2);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:517:22: note: 'glutSpecialFunc' has been explicitly marked deprecated here
+  517 | extern void APIENTRY glutSpecialFunc(void (*func)(int key, int x, int y)) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:541:2: warning: 'glutMotionFunc' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  541 |         glutMotionFunc(mousedrag);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:509:22: note: 'glutMotionFunc' has been explicitly marked deprecated here
+  509 | extern void APIENTRY glutMotionFunc(void (*func)(int x, int y)) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:542:2: warning: 'glutMouseFunc' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  542 |         glutMouseFunc(mouse);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:508:22: note: 'glutMouseFunc' has been explicitly marked deprecated here
+  508 | extern void APIENTRY glutMouseFunc(void (*func)(int button, int state, int x, int y)) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:546:2: warning: 'glutTimerFunc' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  546 |         glutTimerFunc(1000.0/60, timerFunc, 0);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:514:22: note: 'glutTimerFunc' has been explicitly marked deprecated here
+  514 | extern void APIENTRY glutTimerFunc(unsigned int millis, void (*func)(int value), int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:561:12: warning: 'glutCreateMenu' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  561 |         int sm1 = glutCreateMenu(menu);
+      |                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:492:21: note: 'glutCreateMenu' has been explicitly marked deprecated here
+  492 | extern int APIENTRY glutCreateMenu(void (*)(int)) OPENGL_DEPRECATED(10_0, 10_9);
+      |                     ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:562:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  562 |         glutAddMenuEntry("Vertex-shading/face-shading", MENU_SHADINGTYPE);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:563:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  563 |         glutAddMenuEntry("Mesh", MENU_DRAWMESH);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:564:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  564 |         glutAddMenuEntry("Wireframe", MENU_DRAWWIREFRAME);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:565:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  565 |         glutAddMenuEntry("Vertices", MENU_DRAWMESHVERTICES);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:566:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  566 |         glutAddMenuEntry("Normals", MENU_DRAWNORMALS);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:567:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  567 |         glutAddMenuEntry("Silhouette", MENU_DRAWSILHOUETTE);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:568:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  568 |         glutAddMenuEntry("Crease", MENU_DRAWCREASE);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:570:12: warning: 'glutCreateMenu' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  570 |         int sm2 = glutCreateMenu(menu);
+      |                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:492:21: note: 'glutCreateMenu' has been explicitly marked deprecated here
+  492 | extern int APIENTRY glutCreateMenu(void (*)(int)) OPENGL_DEPRECATED(10_0, 10_9);
+      |                     ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:571:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  571 |         glutAddMenuEntry("Catmull-Clark subdivision", MENU_CATMULLCLARK);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:572:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  572 |         glutAddMenuEntry("Loop subdivision", MENU_LOOP);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:573:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  573 |         glutAddMenuEntry("Inflate", MENU_INFLATE);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:574:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  574 |         glutAddMenuEntry("Smoothen", MENU_SMOOTHEN);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:575:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  575 |         glutAddMenuEntry("Simplification", MENU_SIMPLIFY);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:577:12: warning: 'glutCreateMenu' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  577 |         int sm3 = glutCreateMenu(menu);
+      |                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:492:21: note: 'glutCreateMenu' has been explicitly marked deprecated here
+  492 | extern int APIENTRY glutCreateMenu(void (*)(int)) OPENGL_DEPRECATED(10_0, 10_9);
+      |                     ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:578:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  578 |         glutAddMenuEntry("Closest Edge", MENU_SELECTEDGE);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:579:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  579 |         glutAddMenuEntry("Closest Face", MENU_SELECTFACE);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:580:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  580 |         glutAddMenuEntry("Closest Vertex", MENU_SELECTVERTEX);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:581:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  581 |         glutAddMenuEntry("Clear", MENU_SELECTCLEAR);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:583:12: warning: 'glutCreateMenu' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  583 |         int sm4 = glutCreateMenu(menu);
+      |                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:492:21: note: 'glutCreateMenu' has been explicitly marked deprecated here
+  492 | extern int APIENTRY glutCreateMenu(void (*)(int)) OPENGL_DEPRECATED(10_0, 10_9);
+      |                     ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:584:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  584 |         glutAddMenuEntry("Split edge", MENU_SPLITEDGE);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:585:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  585 |         glutAddMenuEntry("Split face", MENU_SPLITFACE);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:586:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  586 |         glutAddMenuEntry("Contract edge", MENU_CONTRACTEDGE);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:587:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  587 |         glutAddMenuEntry("Contract face", MENU_CONTRACTFACE);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:589:10: warning: 'glutCreateMenu' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  589 |         int m = glutCreateMenu(menu);
+      |                 ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:492:21: note: 'glutCreateMenu' has been explicitly marked deprecated here
+  492 | extern int APIENTRY glutCreateMenu(void (*)(int)) OPENGL_DEPRECATED(10_0, 10_9);
+      |                     ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:590:2: warning: 'glutAddSubMenu' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  590 |         glutAddSubMenu("Draw", sm1);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:497:22: note: 'glutAddSubMenu' has been explicitly marked deprecated here
+  497 | extern void APIENTRY glutAddSubMenu(const char *label, int submenu) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:591:2: warning: 'glutAddSubMenu' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  591 |         glutAddSubMenu("Mesh Operations", sm2);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:497:22: note: 'glutAddSubMenu' has been explicitly marked deprecated here
+  497 | extern void APIENTRY glutAddSubMenu(const char *label, int submenu) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:592:2: warning: 'glutAddSubMenu' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  592 |         glutAddSubMenu("Select", sm3);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:497:22: note: 'glutAddSubMenu' has been explicitly marked deprecated here
+  497 | extern void APIENTRY glutAddSubMenu(const char *label, int submenu) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:593:2: warning: 'glutAddSubMenu' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  593 |         glutAddSubMenu("Face Operations", sm4);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:497:22: note: 'glutAddSubMenu' has been explicitly marked deprecated here
+  497 | extern void APIENTRY glutAddSubMenu(const char *label, int submenu) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:594:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  594 |         glutAddMenuEntry("Open File", MENU_OPENFILE);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:595:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  595 |         glutAddMenuEntry("Triangulate", MENU_TRIANGULATE);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:596:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  596 |         glutAddMenuEntry("Write to File", MENU_WRITE);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:597:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  597 |         glutAddMenuEntry("Undo", MENU_UNDO);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:598:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  598 |         glutAddMenuEntry("Generate Mesh", MENU_GENERATE);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:599:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  599 |         glutAddMenuEntry("Cut Mesh", MENU_CUT);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:600:2: warning: 'glutAddMenuEntry' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  600 |         glutAddMenuEntry("Exit", MENU_EXIT);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:496:22: note: 'glutAddMenuEntry' has been explicitly marked deprecated here
+  496 | extern void APIENTRY glutAddMenuEntry(const char *label, int value) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+In file included from /Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:35:
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/helperFunctions.h:602:2: warning: 'glutAttachMenu' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  602 |         glutAttachMenu(GLUT_RIGHT_BUTTON);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:501:22: note: 'glutAttachMenu' has been explicitly marked deprecated here
+  501 | extern void APIENTRY glutAttachMenu(int button) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:167:2: warning: 'glutPostRedisplay' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  167 |         glutPostRedisplay();
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:444:22: note: 'glutPostRedisplay' has been explicitly marked deprecated here
+  444 | extern void APIENTRY glutPostRedisplay(void) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+/Users/yacine/ESIEE/Geometric-Modelling/MeshViewerCMake/main.cpp:383:2: warning: 'glutMainLoop' is deprecated: first deprecated in macOS 10.9 - OpenGL API deprecated. (Define GL_SILENCE_DEPRECATION to silence these warnings) [-Wdeprecated-declarations]
+  383 |         glutMainLoop();
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h:438:22: note: 'glutMainLoop' has been explicitly marked deprecated here
+  438 | extern void APIENTRY glutMainLoop(void) OPENGL_DEPRECATED(10_0, 10_9);
+      |                      ^
+64 warnings and 1 error generated.
+make[2]: *** [CMakeFiles/MeshViewer.dir/main.cpp.o] Error 1
+make[1]: *** [CMakeFiles/MeshViewer.dir/all] Error 2
+make: *** [all] Error 2

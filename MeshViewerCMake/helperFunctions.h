@@ -4,10 +4,20 @@
 #include <fstream>
 #include <string>
 #include <GL/glew.h>
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
 #include <GL/freeglut.h>
+#endif
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp> 
 #include <glm/gtc/type_ptr.hpp>
+
+#ifdef __APPLE__
+#define glGenVertexArrays glGenVertexArraysAPPLE
+#define glBindVertexArray glBindVertexArrayAPPLE
+#define glDeleteVertexArrays glDeleteVertexArraysAPPLE
+#endif
 
 void menu(int item);
 GLuint initshaders(GLenum type, const char *filename);
@@ -245,7 +255,13 @@ void draw_text(GLfloat x, GLfloat y, GLfloat z, string text, vector<GLfloat> col
 
 	glPopAttrib();
 
+#ifdef __APPLE__
+	for (int i = 0; i < text.length(); i++) {
+		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, text[i]);
+	}
+#else
 	glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, (const unsigned char *)text.c_str());
+#endif
 	glUseProgram(shaderprogram);
 }
 
@@ -442,6 +458,7 @@ void mousedrag(int x, int y)
 	glutPostRedisplay();
 }
 
+#ifndef __APPLE__
 void mouseWheel(int button, int dir, int x, int y)
 {
 	if (dir > 0)
@@ -450,6 +467,7 @@ void mouseWheel(int button, int dir, int x, int y)
 		camera_eye += -camera_forward * 0.02;
 	glutPostRedisplay();
 }
+#endif
 
 
 //This function is called when an arrow key is pressed.
@@ -534,7 +552,9 @@ void initInterface(int argc, char* argv[])
 	glutSpecialFunc(keyboard2);
 	glutMotionFunc(mousedrag);
 	glutMouseFunc(mouse);
+#ifndef __APPLE__
 	glutMouseWheelFunc(mouseWheel);
+#endif
 	glutTimerFunc(1000.0/60, timerFunc, 0);
 	
 
