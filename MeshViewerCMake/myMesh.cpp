@@ -70,16 +70,59 @@ bool myMesh::readFile(std::string filename)
 		{
 			float x, y, z;
 			myline >> x >> y >> z;
-			cout << "v " << x << " " << y << " " << z << endl;
+			myVertex *v = new myVertex();
+			v->point = new myPoint3D(x, y, z);
+			v->index = vertices.size();
+			vertices.push_back(v);
 		}
 		else if (t == "mtllib") {}
 		else if (t == "usemtl") {}
 		else if (t == "s") {}
 		else if (t == "f")
 		{
-			cout << "f"; 
-			while (myline >> u) cout << " " << atoi((u.substr(0, u.find("/"))).c_str());
-			cout << endl;
+			faceids.clear();
+			while (myline >> u) {
+				int vi = atoi((u.substr(0, u.find("/"))).c_str()) - 1;
+				faceids.push_back(vi);
+			}
+
+			if (faceids.size() < 3) continue;
+
+			myFace *f = new myFace();
+			f->index = faces.size();
+			faces.push_back(f);
+
+			hedges = new myHalfedge*[faceids.size()];
+			for (size_t i = 0; i < faceids.size(); i++) {
+				hedges[i] = new myHalfedge();
+				hedges[i]->source = vertices[faceids[i]];
+				hedges[i]->adjacent_face = f;
+				hedges[i]->index = halfedges.size();
+				halfedges.push_back(hedges[i]);
+
+				if (vertices[faceids[i]]->originof == NULL) {
+					vertices[faceids[i]]->originof = hedges[i];
+				}
+			}
+
+			f->adjacent_halfedge = hedges[0];
+
+			for (size_t i = 0; i < faceids.size(); i++) {
+				hedges[i]->next = hedges[(i + 1) % faceids.size()];
+				hedges[i]->prev = hedges[(i + faceids.size() - 1) % faceids.size()];
+
+				int v1 = faceids[i];
+				int v2 = faceids[(i + 1) % faceids.size()];
+
+				twin_map[make_pair(v1, v2)] = hedges[i];
+
+				it = twin_map.find(make_pair(v2, v1));
+				if (it != twin_map.end()) {
+					hedges[i]->twin = it->second;
+					it->second->twin = hedges[i];
+				}
+			}
+			delete[] hedges;
 		}
 	}
 
