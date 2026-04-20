@@ -391,6 +391,102 @@ void display() {
   glFlush();
 }
 
+void testHalfEdgesValidity(myMesh* mesh) {
+    std::cout << "--- Running Half-Edge Test ---\n";
+    bool pass = true;
+    for (size_t i = 0; i < mesh->halfedges.size(); ++i) {
+        myHalfedge* h = mesh->halfedges[i];
+        if (h == nullptr) continue;
+        
+        if (h->twin != nullptr && h->twin->twin != h) {
+            std::cout << "Error: Twin relationship broken for halfedge " << i << "\n";
+            pass = false;
+        }
+        if (h->next != nullptr && h->next->prev != h) {
+            std::cout << "Error: Next/Prev relationship broken for next of halfedge " << i << "\n";
+            pass = false;
+        }
+        if (h->prev != nullptr && h->prev->next != h) {
+            std::cout << "Error: Prev/Next relationship broken for prev of halfedge " << i << "\n";
+            pass = false;
+        }
+        if (h->source == nullptr) {
+            std::cout << "Error: Source vertex is missing for halfedge " << i << "\n";
+            pass = false;
+        }
+    }
+    if (pass) std::cout << "Half-Edge Test: PASSED! (All pointers are consistent)\n";
+    else std::cout << "Half-Edge Test: FAILED!\n";
+}
+
+void testTriangulationValidity(myMesh* mesh) {
+    std::cout << "--- Running Triangulation Test ---\n";
+    mesh->triangulate(); // ensure it's triangulated
+    bool pass = true;
+    for (size_t i = 0; i < mesh->faces.size(); ++i) {
+        myFace* f = mesh->faces[i];
+        if (f == nullptr) continue;
+        
+        int n_edges = 0;
+        myHalfedge* h = f->adjacent_halfedge;
+        if (h != nullptr) {
+            myHalfedge* curr = h;
+            do {
+                n_edges++;
+                curr = curr->next;
+                if(n_edges > 1000) { pass = false; break; } // prevent infinite loops
+            } while (curr != h && curr != nullptr);
+        }
+        
+        if (n_edges != 3) {
+            std::cout << "Error: Face " << i << " is not a triangle! (has " << n_edges << " edges)\n";
+            pass = false;
+        }
+    }
+    if (pass) std::cout << "Triangulation Test: PASSED! (All faces are triangles)\n";
+    else std::cout << "Triangulation Test: FAILED!\n";
+}
+
+void testNormalsValidity(myMesh* mesh) {
+    std::cout << "--- Running Normals Test ---\n";
+    mesh->computeNormals();
+    bool pass = true;
+    for (size_t i = 0; i < mesh->faces.size(); ++i) {
+        myFace* f = mesh->faces[i];
+        if (f == nullptr || f->normal == nullptr) continue;
+        
+        double len = f->normal->length();
+                      
+        if (abs(len - 1.0) > 1e-4 && len > 1e-6) {
+            std::cout << "Error: Normal for face " << i << " is not normalized! Length: " << len << "\n";
+            pass = false;
+        }
+    }
+    for (size_t i = 0; i < mesh->vertices.size(); ++i) {
+        myVertex* v = mesh->vertices[i];
+        if (v == nullptr || v->normal == nullptr) continue;
+        
+        double len = v->normal->length();
+                      
+        if (abs(len - 1.0) > 1e-4 && len > 1e-6) {
+            std::cout << "Error: Normal for vertex " << i << " is not normalized! Length: " << len << "\n";
+            pass = false;
+        }
+    }
+    if (pass) std::cout << "Normals Test: PASSED! (Face and vertex normals are valid)\n";
+    else std::cout << "Normals Test: FAILED!\n";
+}
+
+void runAllTests(myMesh* mesh) {
+    std::cout << "\n======================================\n";
+    std::cout << "        RUNNING GEOMETRY TESTS        \n";
+    std::cout << "======================================\n";
+    testHalfEdgesValidity(mesh);
+    testTriangulationValidity(mesh);
+    testNormalsValidity(mesh);
+    std::cout << "======================================\n\n";
+}
+
 void initMesh() {
   pickedpoint = NULL;
   closest_edge = NULL;
@@ -399,8 +495,8 @@ void initMesh() {
 
   cout << "Reading mesh from file...\n";
   m = new myMesh();
-  if (m->readFile("gear.obj")) {
-    m->computeNormals();
+  if (m->readFile("c_gear.obj")) {
+    runAllTests(m);
     makeBuffers(m);
   }
 }

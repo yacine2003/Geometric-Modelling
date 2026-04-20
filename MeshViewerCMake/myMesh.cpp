@@ -235,8 +235,106 @@ bool myMesh::triangulate(myFace *f)
 
 	if (N <= 3) return false;
 
+	// 1. Compute robust normal for the polygon (Newell's method)
+	myVector3D normal(0.0, 0.0, 0.0);
+	curr = f->adjacent_halfedge;
+	do {
+		myPoint3D* p1 = curr->source->point;
+		myPoint3D* p2 = curr->next->source->point;
+		normal.dX += (p1->Y - p2->Y) * (p1->Z + p2->Z);
+		normal.dY += (p1->Z - p2->Z) * (p1->X + p2->X);
+		normal.dZ += (p1->X - p2->X) * (p1->Y + p2->Y);
+		curr = curr->next;
+	} while (curr != f->adjacent_halfedge);
+	normal.normalize();
+
 	while (N > 3) {
-		myHalfedge* h0 = f->adjacent_halfedge;
+		myHalfedge* ear_edge = NULL;
+
+		// 2. Find an ear
+		curr = f->adjacent_halfedge;
+		for (int i = 0; i < N; ++i) {
+			myHalfedge* prev = curr->prev;
+			myHalfedge* next = curr->next;
+			myPoint3D* p_prev = prev->source->point;
+			myPoint3D* p_curr = curr->source->point;
+			myPoint3D* p_next = next->source->point;
+
+			// Check if angle is convex
+			myVector3D v1(p_curr->X - p_prev->X, p_curr->Y - p_prev->Y, p_curr->Z - p_prev->Z);
+			myVector3D v2(p_next->X - p_curr->X, p_next->Y - p_curr->Y, p_next->Z - p_curr->Z);
+			myVector3D cross(
+				v1.dY * v2.dZ - v1.dZ * v2.dY,
+				v1.dZ * v2.dX - v1.dX * v2.dZ,
+				v1.dX * v2.dY - v1.dY * v2.dX
+			);
+			
+			if (cross * normal > 1e-5) { // Convex vertex
+				// Check if any other vertex is inside the triangle
+				bool is_ear = true;
+				myHalfedge* test_edge = next->next;
+				while (test_edge != prev) {
+					myPoint3D* p_test = test_edge->source->point;
+					
+					// Barycentric test
+					myVector3D v0(p_next->X - p_prev->X, p_next->Y - p_prev->Y, p_next->Z - p_prev->Z);
+					myVector3D v1_(p_curr->X - p_prev->X, p_curr->Y - p_prev->Y, p_curr->Z - p_prev->Z);
+					myVector3D v2_(p_test->X - p_prev->X, p_test->Y - p_prev->Y, p_test->Z - p_prev->Z);
+					
+					double dot00 = v0 * v0;
+					double dot01 = v0 * v1_;
+					double dot02 = v0 * v2_;
+					double dot11 = v1_ * v1_;
+					double dot12 = v1_ * v2_;
+					
+					double denom = (dot00 * dot11 - dot01 * dot01);
+					if (denom > 1e-8 || denom < -1e-8) {
+					    double invDenom = 1.0 / denom;
+					    double u = (dot11 * dot02 - dot01 * dot12) * invDenom;
+					    double v_bary = (dot00 * dot12 - dot01 * dot02) * invDenom;
+					    
+					    // Check if point is inside triangle
+					    if ((u >= -1e-5) && (v_bary >= -1e-5) && (u + v_bary <= 1.0 + 1e-5)) {
+						    is_ear = false;
+						    break;
+					    }
+					}
+					test_edge = test_edge->next;
+				}
+				
+				if (is_ear) {
+					ear_edge = prev; 
+					break;
+				}
+			}
+			curr = curr->next;
+		}
+
+		if (ear_edge == NULL) {
+			// Fallback: if no valid ear found, find any convex corner anyway to guarantee termination
+			curr = f->adjacent_halfedge;
+			for (int i = 0; i < N; ++i) {
+				myPoint3D* p_prev = curr->prev->source->point;
+				myPoint3D* p_curr = curr->source->point;
+				myPoint3D* p_next = curr->next->source->point;
+				myVector3D v1(p_curr->X - p_prev->X, p_curr->Y - p_prev->Y, p_curr->Z - p_prev->Z);
+				myVector3D v2(p_next->X - p_curr->X, p_next->Y - p_curr->Y, p_next->Z - p_curr->Z);
+				myVector3D cross(
+					v1.dY * v2.dZ - v1.dZ * v2.dY,
+					v1.dZ * v2.dX - v1.dX * v2.dZ,
+					v1.dX * v2.dY - v1.dY * v2.dX
+				);
+				if (cross * normal > -1e-5) {
+					ear_edge = curr->prev;
+					break;
+				}
+				curr = curr->next;
+			}
+			if (ear_edge == NULL) ear_edge = f->adjacent_halfedge;
+		}
+
+		// Clip the ear
+		myHalfedge* h0 = ear_edge;
 		myHalfedge* h1 = h0->next;
 		myHalfedge* h2 = h1->next;
 		myHalfedge* h_prev = h0->prev;
