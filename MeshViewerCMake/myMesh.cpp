@@ -226,63 +226,56 @@ bool myMesh::triangulate(myFace *f)
 {
 	if (f == NULL || f->adjacent_halfedge == NULL) return false;
 
-	vector<myHalfedge*> bnd;
+	int N = 0;
 	myHalfedge* curr = f->adjacent_halfedge;
 	do {
-		bnd.push_back(curr);
+		N++;
 		curr = curr->next;
 	} while (curr != f->adjacent_halfedge && curr != NULL);
 
-	int N = bnd.size();
 	if (N <= 3) return false;
 
-	double sumX = 0, sumY = 0, sumZ = 0;
-	for (int i = 0; i < N; ++i) {
-		sumX += bnd[i]->source->point->X;
-		sumY += bnd[i]->source->point->Y;
-		sumZ += bnd[i]->source->point->Z;
-	}
+	while (N > 3) {
+		myHalfedge* h0 = f->adjacent_halfedge;
+		myHalfedge* h1 = h0->next;
+		myHalfedge* h2 = h1->next;
+		myHalfedge* h_prev = h0->prev;
 
-	myVertex *vc = new myVertex();
-	vc->point = new myPoint3D(sumX / N, sumY / N, sumZ / N);
-	vc->index = vertices.size();
-	vertices.push_back(vc);
+		myVertex* v0 = h0->source;
+		myVertex* v2 = h2->source;
 
-	vector<myHalfedge*> In(N), Out(N);
-	for (int i = 0; i < N; ++i) {
-		In[i] = new myHalfedge();
-		Out[i] = new myHalfedge();
-		In[i]->source = bnd[(i + 1) % N]->source;
-		Out[i]->source = vc;
+		myHalfedge* h_new = new myHalfedge();
+		myHalfedge* h_new_twin = new myHalfedge();
+		
+		h_new->source = v2;
+		h_new_twin->source = v0;
+		
+		h_new->twin = h_new_twin;
+		h_new_twin->twin = h_new;
+		
+		h_new->index = halfedges.size(); halfedges.push_back(h_new);
+		h_new_twin->index = halfedges.size(); halfedges.push_back(h_new_twin);
 
-		In[i]->index = halfedges.size(); halfedges.push_back(In[i]);
-		Out[i]->index = halfedges.size(); halfedges.push_back(Out[i]);
-	}
+		myFace* f_tri = new myFace();
+		f_tri->index = faces.size();
+		faces.push_back(f_tri);
+		f_tri->adjacent_halfedge = h0;
 
-	vc->originof = Out[0];
+		h1->next = h_new; h_new->prev = h1;
+		h_new->next = h0; h0->prev = h_new;
+		
+		h0->adjacent_face = f_tri;
+		h1->adjacent_face = f_tri;
+		h_new->adjacent_face = f_tri;
 
-	for (int i = 0; i < N; ++i) {
-		myHalfedge *he_i = bnd[i];
-		myHalfedge *in_i = In[i];
-		myHalfedge *out_i = Out[i];
-
-		he_i->next = in_i; in_i->prev = he_i;
-		in_i->next = out_i; out_i->prev = in_i;
-		out_i->next = he_i; he_i->prev = out_i;
-
-		in_i->twin = Out[(i + 1) % N];
-		Out[(i + 1) % N]->twin = in_i;
-
-		myFace *face_i = (i == 0) ? f : new myFace();
-		if (i > 0) {
-			face_i->index = faces.size();
-			faces.push_back(face_i);
-		}
-		face_i->adjacent_halfedge = he_i;
-
-		he_i->adjacent_face = face_i;
-		in_i->adjacent_face = face_i;
-		out_i->adjacent_face = face_i;
+		f->adjacent_halfedge = h_new_twin; 
+		
+		h_prev->next = h_new_twin; h_new_twin->prev = h_prev;
+		h_new_twin->next = h2; h2->prev = h_new_twin;
+		
+		h_new_twin->adjacent_face = f;
+		
+		N--;
 	}
 
 	return true;
