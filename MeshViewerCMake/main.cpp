@@ -46,7 +46,8 @@ enum MENU {
   MENU_WRITE,
   MENU_SIMPLIFY,
   MENU_DRAWNORMALS,
-  MENU_OPENFILE
+  MENU_OPENFILE,
+  MENU_REVOLUTION
 };
 
 myMesh *m;
@@ -175,6 +176,21 @@ void menu(int item) {
   }
   case MENU_SIMPLIFY: {
     m->simplify();
+    break;
+  }
+  case MENU_REVOLUTION: {
+    std::vector<myPoint3D> profile;
+    profile.push_back(myPoint3D(0.2, 0.0, 0));
+    profile.push_back(myPoint3D(0.4, 0.2, 0));
+    profile.push_back(myPoint3D(0.55, 0.45, 0));
+    profile.push_back(myPoint3D(0.6, 0.75, 0));
+    profile.push_back(myPoint3D(0.45, 1.05, 0));
+    profile.push_back(myPoint3D(0.5, 1.3, 0));
+    profile.push_back(myPoint3D(0.7, 1.6, 0));
+    profile.push_back(myPoint3D(0.4, 2.0, 0));
+    m->buildRevolutionSurface(profile, 24);
+    m->computeNormals();
+    makeBuffers(m);
     break;
   }
   }

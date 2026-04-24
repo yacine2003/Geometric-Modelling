@@ -4,6 +4,7 @@
 #include <sstream>
 #include <map>
 #include <utility>
+#include <cmath>
 #include <GL/glew.h>
 #include "myVector3D.h"
 
@@ -178,6 +179,74 @@ void myMesh::normalize()
 	}
 }
 
+
+void myMesh::buildRevolutionSurface(std::vector<myPoint3D> profile, int steps)
+{
+	clear();
+	int n = profile.size();
+	double pi = 3.14159265358979;
+
+	for (int i = 0; i < steps; i++) {
+		double a = 2.0 * pi * i / steps;
+		for (int j = 0; j < n; j++) {
+			myVertex* v = new myVertex();
+			v->point = new myPoint3D(profile[j].X * cos(a), profile[j].Y, profile[j].X * sin(a));
+			v->index = vertices.size();
+			vertices.push_back(v);
+		}
+	}
+
+	std::vector<myHalfedge*> he(steps * (n - 1) * 4, NULL);
+
+	for (int i = 0; i < steps; i++) {
+		for (int j = 0; j < n - 1; j++) {
+			int fi = i * (n - 1) + j;
+			myFace* f = new myFace();
+			f->index = faces.size();
+			faces.push_back(f);
+
+			int idx[4] = {
+				i * n + j,
+				i * n + j + 1,
+				((i + 1) % steps) * n + j + 1,
+				((i + 1) % steps) * n + j
+			};
+
+			for (int k = 0; k < 4; k++) {
+				myHalfedge* h = new myHalfedge();
+				h->source = vertices[idx[k]];
+				h->adjacent_face = f;
+				h->index = halfedges.size();
+				halfedges.push_back(h);
+				he[fi * 4 + k] = h;
+				if (vertices[idx[k]]->originof == NULL)
+					vertices[idx[k]]->originof = h;
+			}
+
+			f->adjacent_halfedge = he[fi * 4];
+			for (int k = 0; k < 4; k++) {
+				he[fi * 4 + k]->next = he[fi * 4 + (k + 1) % 4];
+				he[fi * 4 + k]->prev = he[fi * 4 + (k + 3) % 4];
+			}
+		}
+	}
+
+	for (int i = 0; i < steps; i++) {
+		for (int j = 0; j < n - 1; j++) {
+			int fi = i * (n - 1) + j;
+			int fp = ((i - 1 + steps) % steps) * (n - 1) + j;
+			he[fi * 4]->twin     = he[fp * 4 + 2];
+			he[fp * 4 + 2]->twin = he[fi * 4];
+			if (j < n - 2) {
+				int fa = i * (n - 1) + j + 1;
+				he[fi * 4 + 1]->twin = he[fa * 4 + 3];
+				he[fa * 4 + 3]->twin = he[fi * 4 + 1];
+			}
+		}
+	}
+
+	normalize();
+}
 
 void myMesh::splitFaceTRIS(myFace *f, myPoint3D *p)
 {

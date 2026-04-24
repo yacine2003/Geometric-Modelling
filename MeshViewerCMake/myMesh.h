@@ -2,6 +2,7 @@
 #include "myFace.h"
 #include "myHalfedge.h"
 #include "myVertex.h"
+#include "myPoint3D.h"
 #include <vector>
 #include <string>
 
@@ -29,6 +30,8 @@ public:
 	bool triangulate(myFace *);
 	void simplify();
 	void simplify(myVertex *);
+
+	void buildRevolutionSurface(std::vector<myPoint3D> profile, int steps);
 
 	void clear();
 
